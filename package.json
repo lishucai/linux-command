@@ -9,7 +9,10 @@
     "deploy": "node build/deploy.js",
     "build:css": "stylus -u autoprefixer-stylus template/styl/index.styl -o .deploy/ -c",
     "watch:css": "stylus -u autoprefixer-stylus -w template/styl/index.styl -o .deploy/ -c",
-    "build": "node build/compile.js"
+    "build": "node build/compile.js",
+    "predev": "npm run build",
+    "dev": "electron main.js",
+    "pack": "electron-builder -mwl"
   },
   "keywords": [
     "Linux",
@@ -27,6 +30,8 @@
     "cheerio": "^0.22.0",
     "colors-cli": "^1.0.7",
     "ejs": "^2.5.2",
+    "electron": "^1.7.11",
+    "electron-builder": "^19.55.2",
     "gh-pages": "^0.12.0",
     "highlight.js": "^9.8.0",
     "loading-cli": "^1.0.2",
