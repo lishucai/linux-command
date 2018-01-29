@@ -2,16 +2,17 @@
   "name": "linux-command",
   "version": "1.0.4",
   "description": "Linux Command",
-  "main": "dist/data.json",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node build/compile.js && npm run deploy",
-    "deploy": "node build/deploy.js",
+    "start": "electron main.js",
     "build:css": "stylus -u autoprefixer-stylus template/styl/index.styl -o .deploy/ -c",
     "watch:css": "stylus -u autoprefixer-stylus -w template/styl/index.styl -o .deploy/ -c",
     "build": "node build/compile.js",
-    "predev": "npm run build",
     "dev": "electron main.js",
+    "pack:win": "electron-builder -w",
+    "pack:mac": "electron-builder -m",
+    "pack:linux": "electron-builder -l",
     "pack": "electron-builder -mwl"
   },
   "keywords": [

@@ -251,7 +251,7 @@ function CreateStyl(styl_path,css_path){
 function CreateDatajs(dt_path,callback){
     // 获取 markdown文件所在的目录
     var path_md = path.join(path.dirname(__dirname),'command');
-    var path_dist = path.join(path.dirname(__dirname),'dist');
+    var path_dist = path.join(path.dirname(__dirname),'data');
     if(!exists(path_md)) return console.log("\n  → error: 文件夹 "+path_md+" 不存在 \n ")
     // 获取 markdown 目录的集合
     var path_arr = readMDSync(path_md);
