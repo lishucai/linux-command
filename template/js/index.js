@@ -11,7 +11,7 @@
         this.root_path = (function(){
             var elm_path = $$('current_path');
             var url = window.location.origin+window.location.pathname;
-            return elm_path?url.replace(elm_path.value.trim().replace(/\\/g,'/'),'').replace(/\/$/,'')+ "/.deploy":'';
+            return elm_path?(url.replace(elm_path.value.trim().replace(/\\/g,'/'),'').replace(/\/$/,'')+ "/.deploy").replace(/\.deploy\/\.deploy/,'.deploy'):'';
         })();
 
         this.query = '';     //
