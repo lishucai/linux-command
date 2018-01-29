@@ -2,6 +2,8 @@
 Linux Command Electron 版 ![](https://img.shields.io/github/license/mashape/apistatus.svg)
 =========================================================================================
 
+![软件截图](./mac-screenshot.png)
+
 <br>
 
 ## Linux Command 最新版下载
