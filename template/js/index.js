@@ -11,7 +11,7 @@
         this.root_path = (function(){
             var elm_path = $$('current_path');
             var url = window.location.origin+window.location.pathname;
-            return elm_path?url.replace(elm_path.value,'').replace(/\/$/,''):'';
+            return elm_path?url.replace(elm_path.value.trim().replace(/\\/g,'/'),'').replace(/\/$/,'')+ "/.deploy":'';
         })();
 
         this.query = '';     //
@@ -78,6 +78,7 @@
             }
 
             var rootp = this.root_path.replace(/\/$/,'');
+            console.log(rootp)
             str = islist ? '<a href="'+ rootp +'/c$url$.html"><strong>$name$</strong> - $des$</a><p></p>' : '<a href="'+ rootp +'/c$url$.html"><strong>$name$</strong> - $des$</a>';
             return this.simple(str,{
                 name:name,
