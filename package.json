@@ -8,7 +8,8 @@
     "start": "node build/compile.js && npm run deploy",
     "deploy": "node build/deploy.js",
     "build:css": "stylus -u autoprefixer-stylus template/styl/index.styl -o .deploy/ -c",
-    "watch:css": "stylus -u autoprefixer-stylus -w template/styl/index.styl -o .deploy/ -c"
+    "watch:css": "stylus -u autoprefixer-stylus -w template/styl/index.styl -o .deploy/ -c",
+    "build": "node build/compile.js"
   },
   "keywords": [
     "Linux",
