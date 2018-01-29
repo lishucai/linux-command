@@ -1,13 +1,10 @@
 {
   "name": "linux-command",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Linux Command",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron main.js",
-    "build:css": "stylus -u autoprefixer-stylus template/styl/index.styl -o .deploy/ -c",
-    "watch:css": "stylus -u autoprefixer-stylus -w template/styl/index.styl -o .deploy/ -c",
     "build": "node build/compile.js",
     "dev": "electron main.js",
     "pack:win": "electron-builder -w",
@@ -19,11 +16,11 @@
     "Linux",
     "Command"
   ],
-  "author": "kenny wang <wowohoo@qq.com>",
+  "author": "halo",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaywcjlove/linux-command.git"
+    "url": "https://github.com/haloislet/linux-command"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
@@ -48,7 +45,6 @@
   },
   "dependencies": {},
   "bugs": {
-    "url": "https://github.com/jaywcjlove/linux-command/issues"
-  },
-  "homepage": "https://jaywcjlove.github.io/linux-command/"
+    "url": "https://github.com/haloislet/linux-command/issues"
+  }
 }
