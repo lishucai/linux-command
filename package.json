@@ -12,6 +12,17 @@
     "pack:linux": "electron-builder -l",
     "pack": "electron-builder -mwl"
   },
+  "build": {
+    "mac": {
+      "icon": "template/img/icon.icns"
+    },
+    "win": {
+      "icon": "template/img/icon.ico"
+    },
+    "linux": {
+      "icon": "template/img/icon.icns"
+    }
+  },
   "keywords": [
     "Linux",
     "Command"
