@@ -1,5 +1,5 @@
 
-Linux Command 桌面版 ![](https://img.shields.io/github/license/mashape/apistatus.svg)
+Linux Command 桌面版 ![](https://img.shields.io/github/license/mashape/apistatus.svg) ![](https://img.shields.io/badge/platform-All-brightgreen.svg)
 =========================================================================================
 
 ![软件截图](./mac-screenshot.png)
