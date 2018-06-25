@@ -76,7 +76,10 @@ zip -q -r html.zip html
 ```
 zip -q -r html.zip *
 ```
-
+比如现在要删除压缩文件中的一个文件
+```
+zip -d html.zip aa.html
+```
 ### 问题解决
 
 CentOS7中命令找不到
