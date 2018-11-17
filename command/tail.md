@@ -9,13 +9,13 @@ tail
 
 注意：如果表示字节或行数的N值之前有一个”+”号，则从文件开头的第N项开始显示，而不是显示文件的最后N项。N值后面可以有后缀：b表示512，k表示1024，m表示1 048576(1M)。
 
-### 语法  
+### 语法
 
 ```
 tail(选项)(参数)
 ```
 
-### 选项  
+### 选项
 
 ```
 --retry：即是在tail命令启动时，文件不可访问或者文件稍后变得不可访问，都始终尝试打开文件。使用此选项时需要与选项“——follow=name”连用；
@@ -31,17 +31,22 @@ tail(选项)(参数)
 --version：显示指令的版本信息。
 ```
 
-### 参数  
+### 参数
 
 文件列表：指定要显示尾部内容的文件列表。
 
-### 实例  
+### 实例
 
+```bash
+tail file #（显示文件file的最后10行）
+tail -n +20 file #（显示文件file的内容，从第20行至文件末尾）
+tail -c 10 file #（显示文件file的最后10个字符）
+
+tail -25 mail.log # 显示 mail.log 最后的 25 行
+tail -f mail.log # 等同于--follow=descriptor，根据文件描述符进行追踪，当文件改名或被删除，追踪停止
+tail -F mail.log # 等同于--follow=name  --retry，根据文件名进行追踪，并保持重试，即该文件被删除或改名后，如果再次创建相同的文件名，会继续追踪
 ```
-tail file （显示文件file的最后10行）
-tail -n +20 file （显示文件file的内容，从第20行至文件末尾）
-tail -c 10 file （显示文件file的最后10个字符）
-```
+
 
 
 <!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

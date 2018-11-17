@@ -11,13 +11,13 @@ Linux下的归档使用工具，用来打包和备份。
 
 为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar命令），然后再用压缩程序进行压缩（gzip bzip2命令）。
 
-### 语法  
+### 语法
 
 ```
 tar(选项)(参数)
 ```
 
-### 选项  
+### 选项
 
 ```
 -A或--catenate：新增文件到以存在的备份文件；
@@ -45,11 +45,11 @@ tar(选项)(参数)
 --exclude=<范本样式>：排除符合范本样式的文件。
 ```
 
-### 参数  
+### 参数
 
 文件或目录：指定要打包的文件或目录列表。
 
-### 实例  
+### 实例
 
 ```bash
 - z：有gzip属性的
@@ -77,6 +77,11 @@ tar -tf all.tar
 # 这条命令是列出all.tar包中所有文件，-t是列出文件的意思
 ```
 
+```bash
+tar -cfv archive.tar foo bar  # 从文件foo和bar创建archive.tar。
+tar -tvf archive.tar         # 详细列出archive.tar中的所有文件。
+tar -xf archive.tar          # 从archive.tar提取所有文件。
+```
 
 #### zip格式
 
@@ -99,9 +104,9 @@ tar -tf all.tar
 
 方式二：一次性打包并压缩、解压并解包
 
-打包并压缩： tar -zcvf [目标文件名].tar.gz [原文件名/目录名]  
-解压并解包： tar -zxvf [原文件名].tar.gz  
-注：z代表用gzip算法来压缩/解压。  
+打包并压缩： tar -zcvf [目标文件名].tar.gz [原文件名/目录名]
+解压并解包： tar -zxvf [原文件名].tar.gz
+注：z代表用gzip算法来压缩/解压。
 
 #### tar.bz2格式
 
@@ -143,15 +148,19 @@ tar -tf all.tar
 
 压缩：jar -cvf [目标文件名].jar [原文件名/目录名]  
 解压：jar -xvf [原文件名].jar  
+
 注：如果是打包的是Java类库，并且该类库中存在主类，那么需要写一个META-INF/MANIFEST.MF配置文件，内容如下：  
 
-Manifest-Version: 1.0  
-Created-By: 1.6.0_27 (Sun Microsystems Inc.)  
-Main-class: the_name_of_the_main_class_should_be_put_here  
-然后用如下命令打包：  
+```
+Manifest-Version: 1.0
+Created-By: 1.6.0_27 (Sun Microsystems Inc.)
+Main-class: the_name_of_the_main_class_should_be_put_here
+```
 
-jar -cvfm [目标文件名].jar META-INF/MANIFEST.MF [原文件名/目录名]
-这样以后就能用“java -jar [文件名].jar”命令直接运行主类中的public static void main方法了。
+然后用如下命令打包：
+
+jar -cvfm [目标文件名].jar META-INF/MANIFEST.MF [原文件名/目录名]  
+这样以后就能用“java -jar [文件名].jar”命令直接运行主类中的public static void main方法了。  
 
 #### 7z格式
 
@@ -163,17 +172,26 @@ jar -cvfm [目标文件名].jar META-INF/MANIFEST.MF [原文件名/目录名]
 
 #### 其它例子
 
- **将文件全部打包成tar包** ：
+**将文件全部打包成tar包** ：
 
 ```
-tar -cvf log.tar log2012.log    仅打包，不压缩！ 
-tar -zcvf log.tar.gz log2012.log   打包后，以 gzip 压缩 
-tar -jcvf log.tar.bz2 log2012.log  打包后，以 bzip2 压缩 
+tar -cvf log.tar log2012.log    仅打包，不压缩！
+tar -zcvf log.tar.gz log2012.log   打包后，以 gzip 压缩
+tar -jcvf log.tar.bz2 log2012.log  打包后，以 bzip2 压缩
 ```
 
 在选项`f`之后的文件档名是自己取的，我们习惯上都用 .tar 来作为辨识。 如果加`z`选项，则以.tar.gz或.tgz来代表gzip压缩过的tar包；如果加`j`选项，则以.tar.bz2来作为tar包名。
 
- **查阅上述tar包内有哪些文件** ：
+
+**解压目录**
+
+去掉第一层目录结构，要出除第二层，--strip-components 2
+
+```bash
+tar -xvf portal-web-v2.0.0.tar --strip-components 1  -C 指定目录
+```
+
+**查阅上述tar包内有哪些文件** ：
 
 ```
 tar -ztvf log.tar.gz
@@ -181,7 +199,7 @@ tar -ztvf log.tar.gz
 
 由于我们使用 gzip 压缩的log.tar.gz，所以要查阅log.tar.gz包内的文件时，就得要加上`z`这个选项了。
 
- **将tar包解压缩** ：
+**将tar包解压缩** ：
 
 ```
 tar -zxvf /opt/soft/test/log.tar.gz
@@ -189,7 +207,7 @@ tar -zxvf /opt/soft/test/log.tar.gz
 
 在预设的情况下，我们可以将压缩档在任何地方解开的
 
- **只将tar内的部分文件解压出来** ：
+**只将tar内的部分文件解压出来** ：
 
 ```
 tar -zxvf /opt/soft/test/log30.tar.gz log2013.log
@@ -197,7 +215,7 @@ tar -zxvf /opt/soft/test/log30.tar.gz log2013.log
 
 我可以透过`tar -ztvf`来查阅 tar 包内的文件名称，如果单只要一个文件，就可以透过这个方式来解压部分文件！
 
- **文件备份下来，并且保存其权限** ：
+**文件备份下来，并且保存其权限** ：
 
 ```
 tar -zcvpf log31.tar.gz log2014.log log2015.log log2016.log
@@ -205,19 +223,19 @@ tar -zcvpf log31.tar.gz log2014.log log2015.log log2016.log
 
 这个`-p`的属性是很重要的，尤其是当您要保留原本文件的属性时。
 
- **在文件夹当中，比某个日期新的文件才备份** ：
+**在文件夹当中，比某个日期新的文件才备份** ：
 
 ```
 tar -N "2012/11/13" -zcvf log17.tar.gz test
 ```
 
- **备份文件夹内容是排除部分文件：** 
+**备份文件夹内容是排除部分文件：**
 
 ```
 tar --exclude scf/service -zcvf scf.tar.gz scf/*
 ```
 
- **其实最简单的使用 tar 就只要记忆底下的方式即可：** 
+**其实最简单的使用 tar 就只要记忆底下的方式即可：**
 
 ```
 压　缩：tar -jcv -f filename.tar.bz2 要被压缩的文件或目录名称
